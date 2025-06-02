@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Spring MVC Index</title>
+    </head>
+    <body>
+        <a th:href="@{/first}">go to first</a>
+        <a th:href="@{/second}">go to second</a>
+    </body>
+</html>
