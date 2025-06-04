@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试三个域对象</title>
+</head>
+<body>
+    <h1>测试三个域对象</h1>
+    <hr>
+    <a th:href="@{testServletApi}">使用原生 Servlet API 测试 request</a><br>
+    <a th:href="@{testModel}">使用 model 测试 request</a><br>
+    <a th:href="@{testMap}">使用 map 测试 request</a><br>
+    <a th:href="@{testModelMap}">使用 modelMap 测试 request</a><br>
+    <a th:href="@{testModelAndView}">使用 modelAndView 测试 request</a><br>
+    <a th:href="@{testSessionServletApi}">使用原生 Servlet API 测试 session</a><br>
+    <a th:href="@{testSessionAttributes}">使用 ModelMap 测试 session</a><br>
+    <a th:href="@{testApplication}">使用 Servlet API 测试 application</a><br>
+</body>
+</html>
