@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <!--引入VUE-->
+    <script th:src="@{/static/js/vue3.4.21.js}"></script>
+    <!--引入axios-->
+    <script th:src="@{/static/js/axios.min.js}"></script>
+</head>
+<body>
+    <h1>使用Vue3 + axios + Thymeleaf + SpringMVC发生 AJAX 异步请求</h1>
+    <hr>
+    <div id="app">
+        <button @click="getMessage">获取消息</button>
+        <h1>{{message}}</h1>
+    </div>
+
+<script th:inline="javascript">
+    // 以下代码为：前端接收后端信息，放于前端div中
+    // Vue.createApp({
+    //     data(){
+    //         return{
+    //             message : ''
+    //         }
+    //     },
+    //     methods : {
+    //         // 异步方法
+    //         async getMessage(){
+    //             // 发送 ajax 请求
+    //             let response = await axios.get([[@{/}]] + 'ajax')
+    //             // 将返回的数据交给 message
+    //             this.message = response.data
+    //         }
+    //     }
+    // }).mount("#app")
+
+    // 以下代码为：前端向后端发送json信息,后端转化为java实体类
+    // 发送 ajax POST 请求，并且在请求体当中提交 json 数据
+    let jsonObj = {"username" : "sangui","password" : "777777"}
+    Vue.createApp({
+        data(){
+            return{
+                message : ''
+            }
+        },
+        methods : {
+            // 异步方法
+            async getMessage(){
+                // 发送 ajax 请求
+                let response = await axios.post([[@{/}]] + 'save',JSON.stringify(jsonObj),{
+                    headers : {
+                    // 表示提交的是json数据
+                    'content-type' : 'application/json'
+                }
+                })
+                    // 将返回的数据交给 message
+                    this.message = response.data
+            }
+            }
+        }).mount("#app")
+</script>
+</body>
+</html>
